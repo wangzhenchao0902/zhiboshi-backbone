@@ -21,7 +21,7 @@ class ManagerRepository extends BaseRepository {
      */
     public function createSuperManager()
     {
-        $this->createManager('admin', 'admin', $data);
+        $this->createManager('admin', 'admin', []);
     }
     
     /**
