@@ -3,6 +3,8 @@ namespace App\Models\Warranty\Repositories;
 
 use App\Models\Warranty\Warranty;
 use App\Models\Base\BaseRepository;
+use App\Models\Product\Product;
+use Carbon\Carbon;
 
 class WarrantyRepository extends BaseRepository {
     
@@ -29,6 +31,11 @@ class WarrantyRepository extends BaseRepository {
     public function createWarranty(array $data) : Warranty
     {
         try {
+            $now = Carbon::now();
+            $data = array_merge($data, [
+                'start_at' => $now,
+                'end_at' => $now->addYears(3),
+            ]);
             return $this->create($data);
         } catch (\Exception $e) {
             throw $e;
@@ -61,9 +68,9 @@ class WarrantyRepository extends BaseRepository {
      * @param [type] $sn
      * @return void
      */
-    public function findBySn($sn)
+    public function findByProduct(Product $product)
     {
-        return $this->model->where('sn', $sn)->first();
+        return $this->model->where('product_id', $product->id)->first();
     }
 
     /**

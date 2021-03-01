@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product\Repositories\ProductRepository;
+use App\Models\Product\Transformations\ProductTransformable;
 
 class ProductController extends Controller
 {
+    use ProductTransformable;
+
     protected $productRep;
 
     /**
@@ -33,6 +36,10 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = $this->productRep->paginate($request->input('per_page', 20), $request->except('per_page', 'page'));
+        $products->getCollection()->transform(function($item)
+        {
+            return $this->transformProduct($item);
+        });
         return success($products);
     }
 
