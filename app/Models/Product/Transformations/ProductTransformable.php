@@ -8,7 +8,7 @@ trait ProductTransformable
 {
     public function transformProduct(Product $product)
     {
-        $product->qr_sn = env('APP_URL').'/warranty?sn='.$product->sn;
+        $product->qr_sn = env('WEB_URL').'/warranty?sn='.$product->sn;
         return $product;
     }
 }
