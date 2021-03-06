@@ -34,7 +34,7 @@ class WarrantyRepository extends BaseRepository {
             $now = Carbon::now();
             $data = array_merge($data, [
                 'start_at' => $now,
-                'end_at' => $now->addYears(3),
+                'end_at' => $now->addYears(10),
             ]);
             return $this->create($data);
         } catch (\Exception $e) {
