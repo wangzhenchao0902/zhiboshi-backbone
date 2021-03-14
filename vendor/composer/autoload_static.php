@@ -667,6 +667,7 @@ class ComposerStaticInite390664a3667aa931bef98e878816fee
         'App\\Models\\Manager\\Requests\\CreateRequest' => __DIR__ . '/../..' . '/app/Models/Manager/Requests/CreateRequest.php',
         'App\\Models\\Product\\Product' => __DIR__ . '/../..' . '/app/Models/Product/Product.php',
         'App\\Models\\Product\\Repositories\\ProductRepository' => __DIR__ . '/../..' . '/app/Models/Product/Repositories/ProductRepository.php',
+        'App\\Models\\Product\\Transformations\\ProductTransformable' => __DIR__ . '/../..' . '/app/Models/Product/Transformations/ProductTransformable.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Warranty\\Repositories\\WarrantyRepository' => __DIR__ . '/../..' . '/app/Models/Warranty/Repositories/WarrantyRepository.php',
         'App\\Models\\Warranty\\Warranty' => __DIR__ . '/../..' . '/app/Models/Warranty/Warranty.php',

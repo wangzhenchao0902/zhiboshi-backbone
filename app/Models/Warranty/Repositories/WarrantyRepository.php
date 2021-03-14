@@ -36,7 +36,9 @@ class WarrantyRepository extends BaseRepository {
                 'start_at' => $now,
                 'end_at' => $now->copy()->addYears(10),
             ]);
-            return $this->create($data);
+            $warranty = $this->create($data);
+            $warranty->product->registerWarranty($warranty);
+            return $warranty;
         } catch (\Exception $e) {
             throw $e;
         }

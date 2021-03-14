@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Exports\ProductExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product\Repositories\ProductRepository;
 use App\Models\Product\Transformations\ProductTransformable;
+use Excel;
 
 class ProductController extends Controller
 {
@@ -41,6 +43,18 @@ class ProductController extends Controller
             return $this->transformProduct($item);
         });
         return success($products);
+    }
+
+    /**
+     * export
+     *
+     * @author suxiangdong
+     * @date 2021-03-14
+     * @return void
+     */
+    public function export()
+    {
+        return Excel::download(ProductExport::instance(), '产品二维码内容列表.xls');
     }
 
     /**

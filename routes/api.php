@@ -99,6 +99,8 @@ Route::group(['prefix' => 'manager', 'middleware' => ['manager']], function() {
             Route::get('/', [ProductController::class, 'index']);
             // generate
             Route::post('/generate', [ProductController::class, 'generate']);
+            // export
+            Route::get('/export', [ProductController::class, 'export']);
             // delete
             Route::post('/use/{id}', [ProductController::class, 'use'])->where('id', '[0-9]+');
         });

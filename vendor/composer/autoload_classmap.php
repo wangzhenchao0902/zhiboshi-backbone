@@ -51,6 +51,7 @@ return array(
     'App\\Models\\Manager\\Requests\\CreateRequest' => $baseDir . '/app/Models/Manager/Requests/CreateRequest.php',
     'App\\Models\\Product\\Product' => $baseDir . '/app/Models/Product/Product.php',
     'App\\Models\\Product\\Repositories\\ProductRepository' => $baseDir . '/app/Models/Product/Repositories/ProductRepository.php',
+    'App\\Models\\Product\\Transformations\\ProductTransformable' => $baseDir . '/app/Models/Product/Transformations/ProductTransformable.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\Warranty\\Repositories\\WarrantyRepository' => $baseDir . '/app/Models/Warranty/Repositories/WarrantyRepository.php',
     'App\\Models\\Warranty\\Warranty' => $baseDir . '/app/Models/Warranty/Warranty.php',
