@@ -28,7 +28,7 @@ class WarrantyController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->input('phone')) {
+        if (!$request->input('phone')) {
             return failure('请输入查询手机号');
         }
         
