@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class ManagerSession extends StartSession
 {
+    const MANAGER_SESSION_NAME = 'zbs_session'
+
     /**
      * Handle an incoming request.
      *
@@ -22,6 +24,7 @@ class ManagerSession extends StartSession
         }
 
         $session = $this->getSession($request);
+        $session->setName(self::MANAGER_SESSION_NAME);
 
         if ($this->manager->shouldBlock() ||
             ($request->route() instanceof Route && $request->route()->locksFor())) {
@@ -40,7 +43,7 @@ class ManagerSession extends StartSession
     public function getSession(Request $request)
     {
         return tap($this->manager->driver(), function ($session) use ($request) {
-            $session->setId($request->cookies->get('zbs_session'));
+            $session->setId($request->cookies->get(self::MANAGER_SESSION_NAME));
         });
     }
 }
