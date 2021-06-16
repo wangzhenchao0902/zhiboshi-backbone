@@ -58,8 +58,10 @@ class WarrantyController extends Controller
 
         $this->warrantyRep->createWarranty([
             'product_id' => $product->id,
+            'year' => $product->year,
             'phone' => $request->input('phone'),
             'name' => $request->input('name'),
+            'vin' => $request->input('vin'),
         ]);
 
         return success();
