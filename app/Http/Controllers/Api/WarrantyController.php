@@ -32,7 +32,7 @@ class WarrantyController extends Controller
             return failure('请输入查询手机号');
         }
         
-        $warrantys = $this->warrantyRep->get(array_filter($request->except('per_page', 'page')), ['id', 'name', 'phone', 'start_at', 'end_at']);
+        $warrantys = $this->warrantyRep->get(array_filter($request->except('per_page', 'page')), ['id', 'name', 'phone', 'year', 'start_at', 'end_at']);
         return success($warrantys);
     }
 
