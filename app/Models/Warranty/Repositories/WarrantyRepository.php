@@ -30,13 +30,13 @@ class WarrantyRepository extends BaseRepository {
      */
     public function createWarranty(array $data) : Warranty
     {
-        var_dump($data);
+        $year = $data->year;
         try {
             $now = Carbon::now();
 
             $data = array_merge($data, [
                 'start_at' => $now,
-                'end_at' => $now->copy()->addYears($data->year),
+                'end_at' => $now->copy()->addYears($year),
             ]);
             $warranty = $this->create($data);
             $warranty->product->registerWarranty($warranty);
