@@ -59,7 +59,7 @@ class ProductRepository extends BaseRepository {
      * @param [type] $num
      * @return void
      */
-    public function generate($num, $year)
+    public function generate($num, $year, $complimentary)
     {
         while ($num > 0) {
             $sn = Product::genSn();
@@ -67,7 +67,7 @@ class ProductRepository extends BaseRepository {
                 continue;
             }
             
-            $data = ['status' => 0, 'sn' => $sn, 'year' => $year];
+            $data = ['status' => 0, 'sn' => $sn, 'year' => $year, 'complimentary' => $complimentary];
 
             $this->createProduct($data);
             $num--;
