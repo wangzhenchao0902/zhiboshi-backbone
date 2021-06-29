@@ -67,7 +67,7 @@ class ProductController extends Controller
      */
     public function generate(Request $request)
     {
-        $this->productRep->generate($request->input('num'), $request->input('year'));
+        $this->productRep->generate($request->input('num'), $request->input('year'), $request->input('complimentary');
         return success();
     }
 
