@@ -47,8 +47,8 @@ class ArticleController extends Controller
      */
     public function news(Request $request)
     {
-        $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 1, 'status' => 1]);
-        $articles = $this->articleRep->paginate($request->input('per_page', 20), $conditions, 'id', 'desc', ['id', 'cover', 'title', 'created_at']);
+        $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 1, 'status' => 1],);
+        $articles = $this->articleRep->paginate($request->input('per_page', 20), $conditions, 'id', 'desc', ['id', 'cover', 'title', 'created_at', 'order_number']);
         $articles->getCollection()->transform(function($item)
         {
             return $this->transformArticle($item);
