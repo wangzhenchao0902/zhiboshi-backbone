@@ -56,6 +56,8 @@ class WarrantyChechuangController extends Controller
             return failure('产品已注册');
         }
 
+        return failure('调试')
+
         $this->warrantyRep->createWarrantyChechuang([
             'product_id' => $product->id,
             'year' => $product->year,
