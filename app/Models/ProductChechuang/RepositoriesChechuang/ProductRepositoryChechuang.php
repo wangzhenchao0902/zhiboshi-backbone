@@ -1,5 +1,5 @@
 <?php
-namespace App\Models\ProductChechuang\Repositories;
+namespace App\Models\ProductChechuang\RepositoriesChechuang;
 
 use App\Models\ProductChechuang\ProductChechuang;
 use App\Models\Base\BaseRepository;
