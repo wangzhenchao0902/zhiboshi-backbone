@@ -32,8 +32,8 @@ Route::group(['namespace' => 'Api'], function()
     Route::get('/warranty', [Warranty::class, 'index']);
     Route::post('/warranty', [Warranty::class, 'store']);
 
-    Route::get('/warrantychechuang', [Warranty::class, 'index']);
-    Route::post('/warrantychechuang', [Warranty::class, 'store']);
+    Route::get('/warrantychechuang', [WarrantyChechuang::class, 'index']);
+    Route::post('/warrantychechuang', [WarrantyChechuang::class, 'store']);
 });
 
 /*
