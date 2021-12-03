@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\Api\ArticleController as Article;
 use App\Http\Controllers\Api\WarrantyController as Warranty;
+use App\Http\Controllers\Api\WarrantyChechuangController as WarrantyChechuang;
 Route::group(['namespace' => 'Api'], function()
 {
     // article
@@ -30,6 +31,9 @@ Route::group(['namespace' => 'Api'], function()
 
     Route::get('/warranty', [Warranty::class, 'index']);
     Route::post('/warranty', [Warranty::class, 'store']);
+
+    Route::get('/warrantychechuang', [Warranty::class, 'index']);
+    Route::post('/warrantychechuang', [Warranty::class, 'store']);
 });
 
 /*
@@ -49,7 +53,9 @@ use App\Http\Controllers\Manager\ArticleController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\UploadController;
 use App\Http\Controllers\Manager\ProductController;
+use App\Http\Controllers\Manager\ProductChechuangController;
 use App\Http\Controllers\Manager\WarrantyController;
+use App\Http\Controllers\Manager\WarrantyChechuangController;
 
 Route::group(['prefix' => 'manager', 'middleware' => ['manager']], function() {
     // login
@@ -113,6 +119,28 @@ Route::group(['prefix' => 'manager', 'middleware' => ['manager']], function() {
             Route::put('/{id}', [WarrantyController::class, 'update'])->where('id', '[0-9]+');
             //void
             Route::post('/void/{id}', [WarrantyController::class, 'void'])->where('id', '[0-9]+');
+        });
+
+        // productchechuang
+        Route::group(['prefix' => 'productchechuang'], function() {
+            // list
+            Route::get('/', [ProductChechuangController::class, 'index']);
+            // generate
+            Route::post('/generate', [ProductChechuangController::class, 'generate']);
+            // export
+            Route::get('/export', [ProductChechuangController::class, 'export']);
+            // delete
+            Route::post('/use/{id}', [ProductChechuangController::class, 'use'])->where('id', '[0-9]+');
+        });
+
+        // warrantychechuang
+        Route::group(['prefix' => 'warrantychechuang'], function() {
+            // list
+            Route::get('/', [WarrantyChechuangController::class, 'index']);
+            // generate
+            Route::put('/{id}', [WarrantyChechuangController::class, 'update'])->where('id', '[0-9]+');
+            //void
+            Route::post('/void/{id}', [WarrantyChechuangController::class, 'void'])->where('id', '[0-9]+');
         });
     });
 
