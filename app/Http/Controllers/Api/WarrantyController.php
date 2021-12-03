@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductRepository\Repositories\ProductRepository;
+use App\Models\Product\Repositories\ProductRepository;
 use Illuminate\Http\Request;
-use App\Models\WarrantyRepository\Repositories\WarrantyRepository;
+use App\Models\Warranty\Repositories\WarrantyRepository;
 
 class WarrantyController extends Controller
 {
