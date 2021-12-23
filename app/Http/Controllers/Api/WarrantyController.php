@@ -33,9 +33,9 @@ class WarrantyController extends Controller
         }
         
         $warrantys = $this->warrantyRep->get(array_filter($request->except('per_page', 'page')), ['id', 'year', 'name', 'complimentary', 'phone', 'start_at', 'end_at', 'status']);
-        $warrantys = array_filter($warrantys, function($v, $k) {
-            return $v.status == 1;
-        });
+        // $warrantys = array_filter($warrantys, function($v, $k) {
+        //     return $v.status == 1;
+        // });
         return success($warrantys);
     }
 
