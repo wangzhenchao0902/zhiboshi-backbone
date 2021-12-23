@@ -33,7 +33,6 @@ class WarrantyChechuangController extends Controller
         }
         
         $warrantys = $this->warrantyRep->get(array_filter($request->except('per_page', 'page')), ['id', 'year', 'name', 'complimentary', 'phone', 'start_at', 'end_at', 'status']);
-        echo json_encode($warrantys); 
         return success($warrantys);
     }
 
