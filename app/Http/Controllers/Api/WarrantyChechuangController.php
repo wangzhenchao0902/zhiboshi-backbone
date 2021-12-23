@@ -32,7 +32,7 @@ class WarrantyChechuangController extends Controller
             return failure('请输入查询手机号');
         }
         
-        $warrantys = $this->warrantyRep->get(array_filter($request->except('per_page', 'page')), ['id', 'year', 'name', 'complimentary', 'phone', 'start_at', 'end_at']);
+        $warrantys = $this->warrantyRep->get(array_filter($request->except('per_page', 'page')), ['id', 'year', 'name', 'complimentary', 'phone', 'start_at', 'end_at', 'status']);
         return success($warrantys);
     }
 
