@@ -77,7 +77,8 @@ class AnliController extends Controller
      */
     public function index(Request $request)
     {
-        $anlis = $this->anliRep->paginate($request->input('per_page', 20), array_filter($request->except('per_page', 'page')));
+        $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2]);
+        $anlis = $this->anliRep->paginate($request->input('per_page', 20), $conditions);
         $anlis->getCollection()->transform(function($item)
         {
             return $this->transformAnli($item);
