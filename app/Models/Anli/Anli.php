@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Article;
+namespace App\Models\Anli;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DateTimeInterface;
 
-class Article extends Model
+class Anli extends Model
 {
     use HasFactory;
 
