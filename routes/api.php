@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\Api\ArticleController as Article;
+use App\Http\Controllers\Api\AnliController as Anli;
 use App\Http\Controllers\Api\WarrantyController as Warranty;
 use App\Http\Controllers\Api\WarrantyChechuangController as WarrantyChechuang;
 Route::group(['namespace' => 'Api'], function()
@@ -50,6 +51,7 @@ Route::group(['namespace' => 'Api'], function()
 use App\Http\Controllers\Manager\Auth\LoginController;
 use App\Http\Controllers\Manager\UserController;
 use App\Http\Controllers\Manager\ArticleController;
+use App\Http\Controllers\Manager\AnliController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\UploadController;
 use App\Http\Controllers\Manager\ProductController;
