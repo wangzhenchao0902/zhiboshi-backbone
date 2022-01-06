@@ -59,16 +59,14 @@ class ProductRepository extends BaseRepository {
      * @param [type] $num
      * @return void
      */
-    public function generate($num, $year, $complimentary)
+    public function generate($num, $year, $complimentary, $category)
     {
         while ($num > 0) {
             $sn = Product::genSn();
             if ($this->findBySn($sn)) {
                 continue;
             }
-            
-            $data = ['status' => 0, 'sn' => $sn, 'year' => $year, 'complimentary' => $complimentary];
-
+            $data = ['status' => 0, 'sn' => $sn, 'year' => $year, 'complimentary' => $complimentary, 'category' => $category, ];
             $this->createProduct($data);
             $num--;
         }
