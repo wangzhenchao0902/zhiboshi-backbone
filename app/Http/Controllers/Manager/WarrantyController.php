@@ -31,7 +31,9 @@ class WarrantyController extends Controller
      */
     public function index(Request $request)
     {
-        $warranties = $this->warrantyRep->paginate($request->input('per_page', 20), $request->except('per_page', 'page'));
+        $w = $this->warrantyRep;
+        $ww = $w::join('products', 'products.id', '=', '$w.product_id');
+        $warranties = $w->paginate($request->input('per_page', 20), $request->except('per_page', 'page'));
         return success($warranties);
     }
 
