@@ -87,6 +87,18 @@ Route::group(['prefix' => 'manager', 'middleware' => ['manager']], function() {
             Route::delete('/', [ArticleController::class, 'destroy']);
         });
 
+        // anli
+        Route::group(['prefix' => 'anli'], function() {
+            // list
+            Route::get('/', [AnliController::class, 'index']);
+            // store
+            Route::post('/', [AnliController::class, 'store']);
+            // update
+            Route::put('/{id}', [AnliController::class, 'update'])->where('id', '[0-9]+');
+            // delete
+            Route::delete('/', [AnliController::class, 'destroy']);
+        });
+
         // manager
         Route::group(['prefix' => 'manager'], function() {
             // list
