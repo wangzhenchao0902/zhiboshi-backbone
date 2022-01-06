@@ -10,6 +10,8 @@ class Anli extends Model
 {
     use HasFactory;
 
+    protected $table = "articles";
+
     protected $guarded=[];
 
     /**
