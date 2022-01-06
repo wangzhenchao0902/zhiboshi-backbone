@@ -65,7 +65,7 @@ class WarrantyController extends Controller
             'phone' => $request->input('phone'),
             'name' => $request->input('name'),
             'vin' => $request->input('vin'),
-            'category' => $product->category,
+            'category' => $request->category,
             'complimentary' => $product->complimentary,
         ]);
 
