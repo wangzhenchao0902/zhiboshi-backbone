@@ -77,7 +77,7 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => '1 or category_id = 3 or category_id = 4']);
+        $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => '1 or category_id = 3 or category_id = 4', 1]);
         $articles = $this->articleRep->paginate($request->input('per_page', 20), $conditions);
         $articles->getCollection()->transform(function($item)
         {
