@@ -28,8 +28,13 @@ class ArticleController extends Controller
      */
     public function case(Request $request)
     {
-        $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1]);
-        $articles = $this->articleRep->paginate($request->input('per_page', 20), $conditions, 'id', 'desc', ['id', 'cover', 'title']);
+        $tags = $request->input('brand', '');
+        if($tags) {
+            $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1, 'tags' => $tags]);
+        } else {
+            $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1]);
+        }
+        $articles = $this->articleRep->paginate($request->input('per_page', 20), $conditions, 'id', 'desc', ['id', 'cover', 'title', 'tags']);
         $articles->getCollection()->transform(function($item)
         {
             return $this->transformArticle($item);
