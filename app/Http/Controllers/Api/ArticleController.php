@@ -29,7 +29,8 @@ class ArticleController extends Controller
     public function case(Request $request)
     {
         $tags = $request->input('brand', '');
-        if($tags) {
+        if($tags !== '') {
+            return success($tags);
             $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1, 'tags' => $tags]);
         } else {
             $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1]);
