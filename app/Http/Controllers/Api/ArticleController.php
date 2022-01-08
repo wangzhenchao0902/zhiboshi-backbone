@@ -30,8 +30,7 @@ class ArticleController extends Controller
     {
         $tags = $request->input('brand', '');
         if($tags !== '') {
-            return success($tags);
-            $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1, 'tags' => $tags]);
+            $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1, 'tags' => urlencode($tags)]);
         } else {
             $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1]);
         }
