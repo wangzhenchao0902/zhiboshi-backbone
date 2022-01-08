@@ -31,6 +31,8 @@ class ArticleController extends Controller
         $tags = $request->input('tas', '');
         if($tags !== '') {
             $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1, 'tags' => urlencode($tags)]);
+            var_dump($conditions);
+            exit;
         } else {
             $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 2, 'status' => 1]);
         }
