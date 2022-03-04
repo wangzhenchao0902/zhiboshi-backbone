@@ -54,33 +54,16 @@ class ArticleController extends Controller
     public function news(Request $request)
     {
         $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 1, 'status' => 1]);
-        $articles = $this->articleRep->paginate($request->input('per_page', 20), $conditions, 'order_number', 'desc', ['id', 'tags', 'category_id', 'cover', 'title', 'created_at', 'order_number']);
-
-        // $query = DB::table('articles')
-        //     ->select(['id', 'tags', 'category_id', 'cover', 'title', 'created_at', 'order_number']);
-
-        // if ($conditions) {
-        //     foreach ($conditions as $key => $value) {
-        //         if (is_null($value)) {
-        //             continue;
-        //         }
-        //         if (is_array($value) && count($value) == 3) {
-        //             $query->where($value[0], $value[1], $value[2]);
-        //             continue;
-        //         } else {
-        //             $query->where($key, $value);
-        //         }
-        //     }
-        // }
-
-        // $articles = $query
-        //     ->orderBy('order_number', 'desc')
-        //     ->orderBy('id', 'desc')
-        //     ->paginate($request->input('per_page', 20));
+        $articles = $this->articleRep->paginate(
+            $request->input('per_page', 20),
+            $conditions,
+            'order_number', 'desc',
+            ['id', 'tags', 'category_id', 'cover', 'title', 'created_at', 'order_number'],
+            'id', 'desc'
+        );
         
         $articles->getCollection()->transform(function($item)
         {
-            var_dump($item);
             return $this->transformArticle($item);
         });
         return success($articles);

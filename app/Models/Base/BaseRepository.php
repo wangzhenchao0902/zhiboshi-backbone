@@ -64,7 +64,7 @@ class BaseRepository extends Repository {
      * @param array $columns
      * @return void
      */
-    public function paginate(int $per_page = 100, array $conditions = [], string $order = 'id', string $sort = 'desc', array $columns = ['*'])
+    public function paginate(int $per_page = 100, array $conditions = [], string $order = 'id', string $sort = 'desc', array $columns = ['*'], string $order2 = '', string $sort2 = '')
     {
         $query = $this->model->select($columns);
 
@@ -81,8 +81,12 @@ class BaseRepository extends Repository {
                 }
             }
         }
-
-        return $query->orderBy($order, $sort)->paginate($per_page);
+        
+        if($order2 == '') {
+            return $query->orderBy($order, $sort)->paginate($per_page);
+        } else {
+            return $query->orderBy($order, $sort)->orderBy($order2, $sort2)->paginate($per_page);
+        }
     }
 
 }
