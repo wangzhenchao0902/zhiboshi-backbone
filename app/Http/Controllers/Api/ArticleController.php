@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Controller;
 use App\Models\Article\Repositories\ArticleRepository;
 use App\Models\Article\Transformations\ArticleTransformable;
@@ -56,7 +55,7 @@ class ArticleController extends Controller
         $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 1, 'status' => 1]);
         // $articles = $this->articleRep->paginate($request->input('per_page', 20), $conditions, 'order_number', 'desc', ['id', 'tags', 'category_id', 'cover', 'title', 'created_at', 'order_number']);
 
-        $query = $this->model
+        $query = $this->articleRep
             ->select(['id', 'tags', 'category_id', 'cover', 'title', 'created_at', 'order_number']);
 
         if ($conditions) {
