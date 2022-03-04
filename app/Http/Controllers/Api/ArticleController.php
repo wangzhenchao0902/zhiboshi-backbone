@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article\Repositories\ArticleRepository;
 use App\Models\Article\Transformations\ArticleTransformable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -55,7 +56,7 @@ class ArticleController extends Controller
         $conditions = array_merge(array_filter($request->except('per_page', 'page')), ['category_id' => 1, 'status' => 1]);
         // $articles = $this->articleRep->paginate($request->input('per_page', 20), $conditions, 'order_number', 'desc', ['id', 'tags', 'category_id', 'cover', 'title', 'created_at', 'order_number']);
 
-        $query = $this->articleRep
+        $query = DB::table('articles')
             ->select(['id', 'tags', 'category_id', 'cover', 'title', 'created_at', 'order_number']);
 
         if ($conditions) {
