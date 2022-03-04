@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\Controller;
 use App\Models\Article\Repositories\ArticleRepository;
 use App\Models\Article\Transformations\ArticleTransformable;
@@ -74,6 +75,7 @@ class ArticleController extends Controller
 
         $articles = $query
             ->orderBy('order_number', 'desc')
+            ->orderBy('id', 'desc')
             ->paginate($request->input('per_page', 20));
 
         $articles->getCollection()->transform(function($item)
