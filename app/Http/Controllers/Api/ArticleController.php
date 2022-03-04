@@ -74,7 +74,6 @@ class ArticleController extends Controller
 
         $articles = $query
             ->orderBy('order_number', 'desc')
-            ->orderBy('id', 'desc')
             ->paginate($request->input('per_page', 20));
 
         $articles->getCollection()->transform(function($item)
