@@ -58,10 +58,14 @@ use App\Http\Controllers\Manager\ArticleController;
 use App\Http\Controllers\Manager\AnliController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\UploadController;
+
 use App\Http\Controllers\Manager\ProductController;
 use App\Http\Controllers\Manager\ProductChechuangController;
+use App\Http\Controllers\Manager\ProductTianchuangController;
+
 use App\Http\Controllers\Manager\WarrantyController;
 use App\Http\Controllers\Manager\WarrantyChechuangController;
+use App\Http\Controllers\Manager\WarrantyTianchuangController;
 
 Route::group(['prefix' => 'manager', 'middleware' => ['manager']], function() {
     // login
