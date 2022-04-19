@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\ArticleController as Article;
 use App\Http\Controllers\Api\AnliController as Anli;
 use App\Http\Controllers\Api\WarrantyController as Warranty;
 use App\Http\Controllers\Api\WarrantyChechuangController as WarrantyChechuang;
+use App\Http\Controllers\Api\WarrantyTianchuangController as WarrantyTianchuang;
 Route::group(['namespace' => 'Api'], function()
 {
     // article
@@ -35,6 +36,9 @@ Route::group(['namespace' => 'Api'], function()
 
     Route::get('/warrantychechuang', [WarrantyChechuang::class, 'index']);
     Route::post('/warrantychechuang', [WarrantyChechuang::class, 'store']);
+
+    Route::get('/warrantytianchuang', [WarrantyTianchuang::class, 'index']);
+    Route::post('/warrantytianchuang', [WarrantyTianchuang::class, 'store']);
 });
 
 /*
@@ -155,6 +159,28 @@ Route::group(['prefix' => 'manager', 'middleware' => ['manager']], function() {
             Route::put('/{id}', [WarrantyChechuangController::class, 'update'])->where('id', '[0-9]+');
             //void
             Route::post('/void/{id}', [WarrantyChechuangController::class, 'void'])->where('id', '[0-9]+');
+        });
+
+        // producttianchuang
+        Route::group(['prefix' => 'producttianchuang'], function() {
+            // list
+            Route::get('/', [ProductTianchuangController::class, 'index']);
+            // generate
+            Route::post('/generate', [ProductTianchuangController::class, 'generate']);
+            // export
+            Route::get('/export', [ProductTianchuangController::class, 'export']);
+            // delete
+            Route::post('/use/{id}', [ProductTianchuangController::class, 'use'])->where('id', '[0-9]+');
+        });
+
+        // warrantytianchuang
+        Route::group(['prefix' => 'warrantytianchuang'], function() {
+            // list
+            Route::get('/', [WarrantyTianchuangController::class, 'index']);
+            // generate
+            Route::put('/{id}', [WarrantyTianchuangController::class, 'update'])->where('id', '[0-9]+');
+            //void
+            Route::post('/void/{id}', [WarrantyTianchuangController::class, 'void'])->where('id', '[0-9]+');
         });
     });
 
